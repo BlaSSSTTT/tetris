@@ -2,48 +2,54 @@
     margin: 0;
 }
 
-
 body{
-
-    background:
-        linear-gradient(90deg,#6fcd16,rgb(223,81,7));
+    background: 
+        linear-gradient(320deg, #b4d415, rgb(230, 81, 7));
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
+
 .grid{
-    background: rgb(3,3,73);
+    background: rgb(3, 3, 73);
     padding: 0.5vh;
     display: grid;
-    grid-template-columns: repeat(10,auto);
+    grid-template-columns: repeat(10, auto);
     gap: 0.5vh;
 }
+
 .grid > div{
-    height: min(4vh,7vw);
-    width: min(4vh,7vw);
-    background-color: rgba(182,166,166,0.2);
+    height: min(4vh, 7vw);
+    width: min(4vh, 7vw);
+    background-color: rgba(182, 166, 166, 0.2);
     border-radius: 0.3vh;
 }
-.grid > .O{
-    background-color: rgb(143,32,247);
+
+.grid .O{
+    background-color: rgb(143, 32, 247);
 }
-.grid > .J{
-    background-color: rgb(211,32,11);
+
+.grid .J{
+    background-color: rgb(211, 202, 17);
 }
-.grid > .T{
-    background-color: rgb(241, 249, 31);
+
+.grid .S{
+    background-color: rgb(8, 223, 87);
 }
-.grid > .S{
-    background-color: rgb(31, 191, 249);
+
+.grid .L{
+    background-color: rgb(252, 0, 176);
 }
-.grid > .L{
-    background-color: rgb(6, 255, 255);
+
+.grid .Z{
+    background-color: rgb(200, 7, 17);
 }
-.grid > .I{
-    background-color: rgb(6, 69, 9);
+
+.grid .T{
+    background-color: rgb(4, 0, 135);
 }
-.grid > .Z{
-    background-color: rgb(228, 54, 219);
+
+.grid .I{
+    background-color: rgb(229, 61, 0);
 }
