@@ -60,6 +60,10 @@ const TETROMINOES = {
     ]
 }
 
+let numberOfBrokenRows = 0;
+let points = 0;
+
+
 function convertPositionToIndex(row, column){
     return row * PLAYFIELD_COLUMNS + column;
 }
@@ -268,7 +272,7 @@ function hasCollisions(row, column){
     && playfield[tetromino.row + row][tetromino.column + column];
 }
 
-
+/**Функція щоб елементи самі падали вниз*/
 function moveDown() {
     tetromino.row += 1;
     if(!isValid()){
@@ -276,6 +280,31 @@ function moveDown() {
         placeTetromino();
     }
     draw();
+    /*Щоб перевірити що поінти збільшуються
+    numberOfBrokenRows++;
+    calculatePoitns();*/
 }
 
 setInterval(moveDown, 500);
+
+function calculatePoitns(){
+    switch (numberOfBrokenRows){
+        case 1:
+            points+=10;
+            break;
+        case 2:
+            points+=20;
+            break;
+        case 3:
+            points+=50;
+            break;
+        case 4:
+            points+=100;
+        
+    }
+    numberOfBrokenRows = 0;
+    let divPoints = document.getElementById("points");
+    divPoints.textContent = points;
+}
+
+

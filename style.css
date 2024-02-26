@@ -6,17 +6,21 @@ body{
     background: 
         linear-gradient(320deg, #5f78f6, rgb(230, 81, 7));
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    overflow: hidden;
 }
-
+.points{
+    left: 0;
+}
 .grid{
+    margin-top: 10px;
     background: rgb(41, 41, 54);
     padding: 0.5vh;
     display: grid;
     grid-template-columns: repeat(10, auto);
     gap: 0.5vh;
+    height: 90%;
+    width: 21%;
 }
 
 .grid > div{
