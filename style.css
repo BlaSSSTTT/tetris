@@ -4,7 +4,7 @@
 
 body{
     background: 
-        linear-gradient(320deg, #b4d415, rgb(230, 81, 7));
+        linear-gradient(320deg, #5f78f6, rgb(230, 81, 7));
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@ body{
 }
 
 .grid{
-    background: rgb(3, 3, 73);
+    background: rgb(41, 41, 54);
     padding: 0.5vh;
     display: grid;
     grid-template-columns: repeat(10, auto);
@@ -27,19 +27,19 @@ body{
 }
 
 .grid .O{
-    background-color: rgb(143, 32, 247);
+    background-color: rgb(54, 228, 244);
 }
 
 .grid .J{
-    background-color: rgb(211, 202, 17);
+    background-color: rgb(255, 249, 142);
 }
 
 .grid .S{
-    background-color: rgb(8, 223, 87);
+    background-color: rgb(1, 119, 44);
 }
 
 .grid .L{
-    background-color: rgb(252, 0, 176);
+    background-color: rgb(255, 74, 201);
 }
 
 .grid .Z{
@@ -47,9 +47,9 @@ body{
 }
 
 .grid .T{
-    background-color: rgb(4, 0, 135);
+    background-color: rgb(8, 1, 212);
 }
 
 .grid .I{
-    background-color: rgb(229, 61, 0);
+    background-color: rgb(146, 0, 151);
 }

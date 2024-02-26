@@ -88,7 +88,7 @@ function generateTetromino(){
     const name   = getRandomElement(TETROMINO_NAMES);
     const matrix = TETROMINOES[name];
     const column = PLAYFIELD_COLUMNS / 2 - Math.floor(matrix.length / 2);
-    const rowTetro = 0;
+    const rowTetro = -2;
 
     // console.log(matrix);
     tetromino = {
@@ -103,7 +103,7 @@ function placeTetromino(){
     const matrixSize = tetromino.matrix.length;
     for(let row = 0; row < matrixSize; row++){
         for(let column = 0; column < matrixSize; column++){
-            if(tetromino.matrix[row][column]){
+            if(row+tetromino.row>-1&&tetromino.matrix[row][column]){
                 playfield[tetromino.row + row][tetromino.column + column] = tetromino.name;
             }
         }
@@ -124,7 +124,7 @@ function drawPlayField(){
             
             const name = playfield[row][column];
             const cellIndex = convertPositionToIndex(row,column);
-            // console.log(cellIndex);
+            //console.log(cellIndex);
             cells[cellIndex].classList.add(name);
         }
     }
@@ -144,7 +144,7 @@ function drawTetromino(){
             // );
             // cells[cellIndex].innerHTML = showRotated[row][column];
             // -----------------------
-            if(!tetromino.matrix[row][column]) continue;
+            if(tetromino.row + row<0||!tetromino.matrix[row][column]) continue;
             const cellIndex = convertPositionToIndex(
                 tetromino.row + row,
                 tetromino.column + column
@@ -264,6 +264,18 @@ function isOutsideOfGameboard(row, column){
 }
 
 function hasCollisions(row, column){
-    return tetromino.matrix[row][column] 
+    return tetromino.row + row>-1&&tetromino.matrix[row][column] 
     && playfield[tetromino.row + row][tetromino.column + column];
 }
+
+
+function moveDown() {
+    tetromino.row += 1;
+    if(!isValid()){
+        tetromino.row -= 1;
+        placeTetromino();
+    }
+    draw();
+}
+
+setInterval(moveDown, 500);
