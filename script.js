@@ -1,6 +1,16 @@
+// ДЗ №3
+// 1.Зробити розмітку висновків гри (Час гри, набрана кількість балів і т.п)
+// 2.Створити окрему кнопку рестарт що перезапускатиме гру посеред гри
+// 3.Додати клавіатуру на екрані браузеру 
 
+// Додаткове складніше завдання
+// 4.Показувати наступну фігуру що буде випадати
+// 5.Додати рівні при котрих збільшується швидкість падіння фігур
+// 6.Зберегти і виводити найкращий власний результат
 
+let bestScore=0;
 const scoreElement = document.querySelector('.score');
+const timeElement = document.querySelector('.time');
 const PLAYFIELD_COLUMNS = 10;
 const PLAYFIELD_ROWS    = 20;
 const TETROMINO_NAMES = [
@@ -66,6 +76,7 @@ init()
 
 
 bntRestart.addEventListener("click",function(){
+    seconds = 0;
     document.querySelector(".grid").innerHTML = "";
     init();
     overlay.style.display = "none";
@@ -75,7 +86,13 @@ bntRestart.addEventListener("click",function(){
 
 function init(){
     isGameOver = false;
-    score = 0;
+    console.log(bestScore);
+    console.log(score);
+    if(bestScore<score){
+        bestScore=score;
+        document.getElementById('bestScore').innerHTML = bestScore;
+        score=0;
+    }
     scoreElement.innerHTML = 0;
     generatePlayField();
     generateTetromino();
@@ -355,17 +372,34 @@ function moveDown(){
         gameOver();
     }
 }
+let seconds =0;
+function startTimer() {
+    intervalId = setInterval(() => {
+        if(!isPaused&&!isGameOver){
+            seconds++;
+            timeElement.innerHTML = seconds;
+        }
+    }, 1000); // Часовий інтервал в мілісекундах (тут 1000 мілісекунд = 1 секунда)
+}
 
+startTimer();
 
 function gameOver(){
     stopLoop();
+    timeElement.innerHTML = 0;
     overlay.style.display = "flex";
+    document.getElementById('points-sum').innerHTML = score;
+    document.getElementById('time-sum').innerHTML = seconds;
+    
 }
 function startLoop(){
     if(!timedId){
-        timedId = setTimeout(()=>{ requestAnimationFrame(moveDown) }, 700)
+        timedId = setTimeout(()=>{ requestAnimationFrame(moveDown) }, 700);
     }
 }
+
+
+
 
 function stopLoop(){
     cancelAnimationFrame(timedId);
@@ -414,3 +448,32 @@ function hasCollisions(row, column){
     return tetromino.matrix[row][column] 
     && playfield[tetromino.row + row]?.[tetromino.column + column];
 }
+
+
+
+document.getElementById('left').addEventListener('click', function(){
+    moveTetrominoLeft();
+    draw();
+});
+document.getElementById('right').addEventListener('click', function(){
+    moveTetrominoRight();
+    draw();
+});
+document.getElementById('down').addEventListener('click', function(){
+    moveTetrominoDown();
+    draw();
+});
+document.getElementById('up').addEventListener('click', function(){
+    rotate();
+    draw();
+});
+document.getElementById('arrow').addEventListener('click', function(){
+    seconds = 0;
+    document.querySelector(".grid").innerHTML = "";
+    init();
+    overlay.style.display = "none";
+});
+document.getElementById('fix').addEventListener('click', function(){
+    dropTetraminoDown();
+    draw();
+});

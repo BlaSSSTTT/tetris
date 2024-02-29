@@ -9,9 +9,34 @@ body{
     width: 100%;
     overflow: hidden;
 }
-.score{
-    
+i{
+    cursor: pointer;
+    font-size: 30px;
 }
+.container {
+    display: flex;
+    justify-content: center; /* Розміщує всі елементи у центрі горизонтально */
+    align-items: center; /* Розміщує всі елементи у центрі вертикально */
+    height: 100vh; /* Зробити контейнер по висоті вікна браузера */
+}
+
+.centered-items {
+    display: flex;
+    align-items: center; /* Розміщує елементи центрально вертикально */
+}
+
+.score {
+    margin-left: 10px; /* Додатковий відступ між елементами */
+}
+.summaries{
+    display: flex;
+    justify-content: center; /* Розміщує всі елементи у центрі горизонтально */
+    align-items: center; /* Розміщує всі елементи у центрі вертикально */
+    background-color: #5f78f6;
+    border-radius: 15px;
+    padding: 15px;
+}
+
 .points{
     left: 0;
 }
@@ -35,8 +60,10 @@ body{
     font-size: 25px;
     box-shadow: 0 0 0 5 rgba(0, 0, 0, 0.7);
     cursor: pointer;
+    margin-right: 15px;
 }
 .grid{
+    margin-left: 12%;
     margin-top: 10px;
     background: rgb(41, 41, 54);
     padding: 0.5vh;
@@ -44,7 +71,6 @@ body{
     grid-template-columns: repeat(10, auto);
     gap: 0.5vh;
     height: 90%;
-    width: 21%;
 }
 
 .grid > div{
